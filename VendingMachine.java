@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class VendingMachine {
     // I added the prices by making a new array but
     // another option might be to do a 2d array but I didn't
@@ -18,10 +20,28 @@ public class VendingMachine {
         return prices;
     }
 
+    //initialize money and create get and set methods
+    int money = 0;
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
     public static void main(String[] args) {
         VendingMachine vendingMachine = new VendingMachine();
         String[] availableSnacks = vendingMachine.getSnacks();
         int[] snackPrices = vendingMachine.getPrices();
+
+        //create scanner to take in user input
+        Scanner scanner = new Scanner(System.in);
+        
+        //Ask user to insert money and set money to that amount
+        System.out.println("Please insert money");
+        vendingMachine.setMoney(scanner.nextInt());
 
         System.out.println("Available snacks in the vending machine:");
         /*
