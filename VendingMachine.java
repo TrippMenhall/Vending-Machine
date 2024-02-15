@@ -4,13 +4,16 @@ public class VendingMachine {
     // know if that is better or not so I just did it the
     // simplest way I could think of
 
+    //create arrays for snacks and prices
     private String[] snacks = {"Chips", "Chocolate Bar", "Popcorn", "Pretzels", "Candy", "Nuts"};
     private int[] prices = {1, 1, 2, 3, 2, 1};
 
+    //returns snacks
     public String[] getSnacks() {
         return snacks;
     }
 
+    //returns proces
     public int[] getPrices() {
         return prices;
     }
@@ -27,8 +30,11 @@ public class VendingMachine {
             System.out.println(snack + " $" + price);
         }
         */
+        //for each snack in the array print out the snack with the price and increase index of price each time
+        int j = 0;
         for(int i = 0; i < availableSnacks.length; i++){
-            System.out.println(availableSnacks[i] + " $" + snackPrices[i]);
+            System.out.println(availableSnacks[i] + " $" + snackPrices[0] );
+            j++;
         }
     }
 }
