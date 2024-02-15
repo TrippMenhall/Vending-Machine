@@ -1,10 +1,6 @@
 import java.util.Scanner;
 
 public class VendingMachine {
-    // I added the prices by making a new array but
-    // another option might be to do a 2d array but I didn't
-    // know if that is better or not so I just did it the
-    // simplest way I could think of
 
     //create arrays for snacks and prices
     private String[] snacks = {"Chips", "Chocolate Bar", "Popcorn", "Pretzels", "Candy", "Nuts"};
@@ -15,7 +11,7 @@ public class VendingMachine {
         return snacks;
     }
 
-    //returns proces
+    //returns prices
     public int[] getPrices() {
         return prices;
     }
@@ -36,6 +32,15 @@ public class VendingMachine {
         String[] availableSnacks = vendingMachine.getSnacks();
         int[] snackPrices = vendingMachine.getPrices();
 
+        // Welcome statement and instructions
+        System.out.println("""
+        ==========================================
+        Welcome to the Vending Machine!
+        Enter the money and then choose your snack
+        There will be a confirmation before the purchase is finalized
+        ==========================================
+        """);
+
         //create scanner to take in user input
         Scanner scanner = new Scanner(System.in);
         
@@ -53,7 +58,7 @@ public class VendingMachine {
         //for each snack in the array print out the snack with the price and increase index of price each time
         int j = 0;
         for(int i = 0; i < availableSnacks.length; i++){
-            System.out.println(availableSnacks[i] + " $" + snackPrices[0] );
+            System.out.println(availableSnacks[i] + " $" + snackPrices[j] );
             j++;
         }
     }
