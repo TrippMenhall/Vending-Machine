@@ -55,10 +55,6 @@ public class VendingMachine {
 
         //create scanner to take in user input
         Scanner scanner = new Scanner(System.in);
-        
-        //Ask user to insert money and set money to that amount
-        System.out.println("Please insert money");
-        vendingMachine.setMoney(scanner.nextInt());
 
         System.out.println("Available snacks in the vending machine:");
      
@@ -70,8 +66,24 @@ public class VendingMachine {
         }
 
         //user is asked to select their snack, then program prints out selected snack and its price
-        System.out.println("Please select a snack by typing its number.");
+        System.out.println("\nPlease select a snack by typing its number.");
         vendingMachine.setSelectedSnack(scanner.nextInt()-1);
         System.out.println("You chose " + vendingMachine.snacks[vendingMachine.getSelectedSnack()] + " that will cost $" + vendingMachine.prices[vendingMachine.getSelectedSnack()] + ".");
+
+        //Ask user to insert money and set money to that amount
+        System.out.println("\nPlease insert money");
+        vendingMachine.setMoney(scanner.nextInt());
+        
+        // Checks to see if the price is greater than or less than the money inserted
+        if(vendingMachine.prices[vendingMachine.getSelectedSnack()] < vendingMachine.getMoney()){
+            // Sets the money to the change left from transaction and then outputs the money
+            vendingMachine.setMoney(vendingMachine.getMoney() - vendingMachine.prices[vendingMachine.getSelectedSnack()]);
+            System.out.println("Your change is $" + vendingMachine.getMoney());
+        }else if(vendingMachine.prices[vendingMachine.getSelectedSnack()] > vendingMachine.getMoney()){
+            // Outputs the ammount difference between money already inserted and money needed
+            System.out.println("Please enter $" + (vendingMachine.prices[vendingMachine.getSelectedSnack()] - vendingMachine.getMoney()) + " more");
+        }else{
+            // I dont think anything needs to go here
+        }
     }
 }
