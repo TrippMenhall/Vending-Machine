@@ -27,6 +27,18 @@ public class VendingMachine {
         this.money = money;
     }
 
+    //get and set for selected snack
+    int selectedSnack = 0;
+
+    public int getSelectedSnack() {
+        return selectedSnack;
+    }
+
+    public void setSelectedSnack(int selectedSnack) {
+        this.selectedSnack = selectedSnack;
+    }
+
+
     public static void main(String[] args) {
         VendingMachine vendingMachine = new VendingMachine();
         String[] availableSnacks = vendingMachine.getSnacks();
@@ -49,17 +61,17 @@ public class VendingMachine {
         vendingMachine.setMoney(scanner.nextInt());
 
         System.out.println("Available snacks in the vending machine:");
-        /*
-        // I don't know how this works and how to add the price into it
-        for (String snack : availableSnacks) { 
-            System.out.println(snack + " $" + price);
-        }
-        */
+     
         //for each snack in the array print out the snack with the price and increase index of price each time
-        int j = 0;
+        int j = 1;
         for(int i = 0; i < availableSnacks.length; i++){
-            System.out.println(availableSnacks[i] + " $" + snackPrices[j] );
+            System.out.println(j + ". " + availableSnacks[i] + " $" + snackPrices[i]);
             j++;
         }
+
+        //user is asked to select their snack, then program prints out selected snack and its price
+        System.out.println("Please select a snack by typing its number.");
+        vendingMachine.setSelectedSnack(scanner.nextInt()-1);
+        System.out.println("You chose " + vendingMachine.snacks[vendingMachine.getSelectedSnack()] + " that will cost $" + vendingMachine.prices[vendingMachine.getSelectedSnack()] + ".");
     }
 }
