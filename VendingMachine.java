@@ -48,7 +48,7 @@ public class VendingMachine {
         System.out.println("""
         ==========================================
         Welcome to the Vending Machine!
-        Enter the money and then choose your snack
+        Choose your snack and insert money
         There will be a confirmation before the purchase is finalized
         ==========================================
         """);
@@ -70,20 +70,34 @@ public class VendingMachine {
         vendingMachine.setSelectedSnack(scanner.nextInt()-1);
         System.out.println("You chose " + vendingMachine.snacks[vendingMachine.getSelectedSnack()] + " that will cost $" + vendingMachine.prices[vendingMachine.getSelectedSnack()] + ".");
 
+        //if(confirm == "y")
+
         //Ask user to insert money and set money to that amount
         System.out.println("\nPlease insert money");
         vendingMachine.setMoney(scanner.nextInt());
-        
-        // Checks to see if the price is greater than or less than the money inserted
-        if(vendingMachine.prices[vendingMachine.getSelectedSnack()] < vendingMachine.getMoney()){
-            // Sets the money to the change left from transaction and then outputs the money
-            vendingMachine.setMoney(vendingMachine.getMoney() - vendingMachine.prices[vendingMachine.getSelectedSnack()]);
-            System.out.println("Your change is $" + vendingMachine.getMoney());
-        }else if(vendingMachine.prices[vendingMachine.getSelectedSnack()] > vendingMachine.getMoney()){
-            // Outputs the ammount difference between money already inserted and money needed
-            System.out.println("Please enter $" + (vendingMachine.prices[vendingMachine.getSelectedSnack()] - vendingMachine.getMoney()) + " more");
-        }else{
-            // I dont think anything needs to go here
+
+         //Ask user to confirm their snack choice
+         System.out.println("You are purchasing " + vendingMachine.snacks[vendingMachine.getSelectedSnack()] + " for $" + vendingMachine.prices[vendingMachine.getSelectedSnack()] + ". Please type 'y' to confirm or 'n' to cancel");
+         String confirm = scanner.next();
+           
+         if(confirm.equals("y")){
+           // Checks to see if the price is greater than or less than the money inserted
+           if(vendingMachine.prices[vendingMachine.getSelectedSnack()] < vendingMachine.getMoney()){
+               // Sets the money to the change left from transaction and then outputs the money
+               vendingMachine.setMoney(vendingMachine.getMoney() - vendingMachine.prices[vendingMachine.getSelectedSnack()]);
+               System.out.println("Your change is $" + vendingMachine.getMoney());
+           }else if(vendingMachine.prices[vendingMachine.getSelectedSnack()] > vendingMachine.getMoney()){
+               // Outputs the ammount difference between money already inserted and money needed
+               System.out.println("Please enter $" + (vendingMachine.prices[vendingMachine.getSelectedSnack()] - vendingMachine.getMoney()) + " more");
+           }
+
+           //departure message
+           System.out.println("Great choice! I hope you enjoy your " + vendingMachine.snacks[vendingMachine.getSelectedSnack()]);
+        }else if(confirm.equals("n")){
+            System.out.println("you have been refunded $" + vendingMachine.getMoney());
         }
+    
+
+     
     }
 }
